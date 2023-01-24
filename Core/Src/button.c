@@ -20,9 +20,7 @@
 
 static McuPin buttons[BUTTONS_NUM] = {{GPIOB, GPIO_PIN_3},
                                       {GPIOB, GPIO_PIN_4},
-									  {GPIOB, GPIO_PIN_5},
-									  {GPIOB, GPIO_PIN_6},
-									  {GPIOB, GPIO_PIN_7}};
+									  {GPIOB, GPIO_PIN_5}};
 
 // End of configuration
 

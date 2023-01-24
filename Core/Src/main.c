@@ -48,6 +48,10 @@ TIM_HandleTypeDef htim16;
 
 /* USER CODE BEGIN PV */
 extern char tx_buffer_lcd[40];
+
+uint8_t counter_up = 0;
+uint8_t counter_down = 0;
+uint8_t counter_enter = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -95,6 +99,7 @@ int main(void)
   MX_I2C1_Init();
   MX_TIM16_Init();
   /* USER CODE BEGIN 2 */
+  HAL_Delay(100);
   lcd1602_Init();
   HAL_TIM_Base_Start_IT(&htim16);
   lcd1602_SetCursor(0, 0);
@@ -261,21 +266,21 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void Button_Processing(){
-	if(BUTTON_GetAction(BUTTON_LEFT)){
-
+	if(BUTTON_GetAction(BUTTON_UP) == BUTTON_SHORT_PRESS){
+		counter_up++;
 	}
-	if(BUTTON_GetAction(BUTTON_RIGHT)){
-
+	if(BUTTON_GetAction(BUTTON_DOWN) == BUTTON_SHORT_PRESS){
+		counter_down++;
 	}
-	if(BUTTON_GetAction(BUTTON_UP)){
-
+	if(BUTTON_GetAction(BUTTON_ENTER) == BUTTON_SHORT_PRESS){
+		counter_enter++;
 	}
-	if(BUTTON_GetAction(BUTTON_DOWN)){
-
+	if(BUTTON_GetAction(BUTTON_ENTER) == BUTTON_LONG_PRESS){
+		counter_up = 0;
+		counter_down = 0;
+		counter_enter = 0;
 	}
-	if(BUTTON_GetAction(BUTTON_ENTER) == BUTTON_VERY_LONG_PRESS){
-
-	}
+	BUTTON_ResetActions();
 
 }
 

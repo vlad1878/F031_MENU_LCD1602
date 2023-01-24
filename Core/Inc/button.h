@@ -29,15 +29,13 @@
 typedef enum {
     BUTTON_UP,
     BUTTON_DOWN,
-	BUTTON_LEFT,
-	BUTTON_RIGHT,
 	BUTTON_ENTER,
     BUTTONS_NUM,
 } ButtonID;
 
 // End of configuration
 
-#define DEBOUNCE_TIME_MS                                     100
+#define DEBOUNCE_TIME_MS                                     10
 #define GPIO_BUTTON_PRESSED                                  (!GPIO_BUTTON_NOT_PRESSED)
 
 typedef struct
