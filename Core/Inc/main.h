@@ -65,11 +65,7 @@ void Error_Handler(void);
 #define BUTTON_UP_GPIO_Port GPIOB
 #define BUTTON_DOWN_Pin GPIO_PIN_4
 #define BUTTON_DOWN_GPIO_Port GPIOB
-#define BUTTON_LEFT_Pin GPIO_PIN_5
-#define BUTTON_LEFT_GPIO_Port GPIOB
-#define BUTTON_RIGHT_Pin GPIO_PIN_6
-#define BUTTON_RIGHT_GPIO_Port GPIOB
-#define BUTTON_ENTER_Pin GPIO_PIN_7
+#define BUTTON_ENTER_Pin GPIO_PIN_5
 #define BUTTON_ENTER_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 

@@ -23,6 +23,8 @@
 /* USER CODE BEGIN Includes */
 #include "button.h"
 #include "lcd1602_i2c_lib.h"
+#include "stdio.h"
+#include "stdbool.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -45,7 +47,7 @@ I2C_HandleTypeDef hi2c1;
 TIM_HandleTypeDef htim16;
 
 /* USER CODE BEGIN PV */
-
+extern char tx_buffer_lcd[40];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -95,6 +97,9 @@ int main(void)
   /* USER CODE BEGIN 2 */
   lcd1602_Init();
   HAL_TIM_Base_Start_IT(&htim16);
+  lcd1602_SetCursor(0, 0);
+  sprintf(tx_buffer_lcd, "Goog job dude!   ");
+  lcd1602_Print_text(tx_buffer_lcd);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -246,10 +251,8 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
-  /*Configure GPIO pins : BUTTON_UP_Pin BUTTON_DOWN_Pin BUTTON_LEFT_Pin BUTTON_RIGHT_Pin
-                           BUTTON_ENTER_Pin */
-  GPIO_InitStruct.Pin = BUTTON_UP_Pin|BUTTON_DOWN_Pin|BUTTON_LEFT_Pin|BUTTON_RIGHT_Pin
-                          |BUTTON_ENTER_Pin;
+  /*Configure GPIO pins : BUTTON_UP_Pin BUTTON_DOWN_Pin BUTTON_ENTER_Pin */
+  GPIO_InitStruct.Pin = BUTTON_UP_Pin|BUTTON_DOWN_Pin|BUTTON_ENTER_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);

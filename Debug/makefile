@@ -60,8 +60,8 @@ all: main-build
 main-build: F031_MENU_LCD1602.elf secondary-outputs
 
 # Tool invocations
-F031_MENU_LCD1602.elf F031_MENU_LCD1602.map: $(OBJS) $(USER_OBJS) C:\STM32_Projects\F031_MENU_LCD1602\STM32F031K6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "F031_MENU_LCD1602.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\STM32_Projects\F031_MENU_LCD1602\STM32F031K6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F031_MENU_LCD1602.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+F031_MENU_LCD1602.elf F031_MENU_LCD1602.map: $(OBJS) $(USER_OBJS) C:\STM32_Projects\GitHub\F031_MENU_LCD1602\STM32F031K6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "F031_MENU_LCD1602.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\STM32_Projects\GitHub\F031_MENU_LCD1602\STM32F031K6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F031_MENU_LCD1602.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
